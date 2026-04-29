@@ -2,54 +2,254 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1920, height=1080" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SASIGLOBAL | Elite Video</title>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-      * {
-        box-sizing: border-box;
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body {
         margin: 0;
-        padding: 0;
-      }
-      html,
-      body {
-        margin: 0;
-        width: 1920px;
-        height: 1080px;
+        width: 100%;
+        height: 100%;
         overflow: hidden;
         background-color: transparent;
         font-family: "Inter", sans-serif;
       }
+      .composition {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        color: white;
+      }
+      .scene {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        box-sizing: border-box;
+        opacity: 0;
+      }
+      .scene:first-child { opacity: 1; }
+      .image-bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+      .image-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.5;
+      }
+      .dark-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(10,10,15,0.85) 0%, rgba(10,10,15,0.4) 50%, rgba(10,10,15,0.85) 100%);
+        z-index: 1;
+      }
+      .content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        width: 100%;
+      }
+      .logo-box {
+        width: 120px;
+        height: 120px;
+        background: white;
+        padding: 12px;
+        margin: 0 auto 24px;
+        box-shadow: 0 0 40px rgba(220,20,60,0.4);
+      }
+      .logo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .title-main {
+        font-size: clamp(36px, 6vw, 80px);
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+      .title-main span { color: #dc143c; }
+      .subtitle-main {
+        font-size: clamp(14px, 2vw, 24px);
+        text-transform: uppercase;
+        letter-spacing: 0.4em;
+        color: #94a3b8;
+      }
+      .service-title {
+        font-size: clamp(28px, 5vw, 64px);
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        line-height: 1.1;
+      }
+      .crimson-bar {
+        width: 100px;
+        height: 4px;
+        background: #dc143c;
+        margin: 24px auto;
+      }
+      .scanlines {
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          to bottom,
+          transparent 0px,
+          transparent 2px,
+          rgba(0,0,0,0.03) 2px,
+          rgba(0,0,0,0.03) 4px
+        );
+        z-index: 99;
+        pointer-events: none;
+      }
+      .particle {
+        position: absolute;
+        background: #dc143c;
+        border-radius: 50%;
+        opacity: 0;
+        pointer-events: none;
+      }
     </style>
   </head>
   <body>
-    <div
-      id="root"
-      data-composition-id="main"
-      data-start="0"
-      data-duration="15"
-      data-width="1920"
-      data-height="1080"
-    >
-      <div
-        id="video-layer"
-        data-composition-id="sasiglobal-elite"
-        data-composition-src="compositions/sasiglobal-elite.html"
-        data-start="0"
-        data-duration="15"
-        data-track-index="1"
-        data-width="1920"
-        data-height="1080"
-      ></div>
+    <div class="composition" id="comp">
+      <div class="scanlines"></div>
+
+      <!-- Scene 1: Brand Intro -->
+      <div id="scene-1" class="scene" style="opacity:1">
+        <div class="content">
+          <div class="logo-box" id="s1-logo">
+            <img src="assets/images/img203.jpg" alt="SASIGLOBAL">
+          </div>
+          <h1 class="title-main" id="s1-title">SASI<span>GLOBAL</span></h1>
+          <p class="subtitle-main" id="s1-sub">Autoridad Geoespacial</p>
+        </div>
+      </div>
+
+      <!-- Scene 2: Engineering -->
+      <div id="scene-2" class="scene">
+        <div class="image-bg">
+          <img src="assets/images/solutions_industrial.png" alt="Engineering">
+          <div class="dark-overlay"></div>
+        </div>
+        <div class="content">
+          <h2 class="service-title" id="s2-text">Ingeniería de<br>Precisión Industrial</h2>
+          <div class="crimson-bar" id="s2-bar"></div>
+        </div>
+      </div>
+
+      <!-- Scene 3: Global Ops -->
+      <div id="scene-3" class="scene">
+        <div class="image-bg">
+          <img src="assets/images/operations_center.png" alt="Operations">
+          <div class="dark-overlay"></div>
+        </div>
+        <div class="content">
+          <h2 class="service-title" id="s3-text">Red Global de<br>Operaciones</h2>
+          <div class="crimson-bar" id="s3-bar"></div>
+        </div>
+      </div>
+
+      <!-- Scene 4: Intelligence -->
+      <div id="scene-4" class="scene">
+        <div class="image-bg">
+          <img src="assets/images/tech_high.png" alt="Intelligence">
+          <div class="dark-overlay"></div>
+        </div>
+        <div class="content">
+          <h2 class="service-title" id="s4-text">Inteligencia<br>Geoespacial Avanzada</h2>
+          <div class="crimson-bar" id="s4-bar"></div>
+        </div>
+      </div>
+
+      <!-- Scene 5: Outro -->
+      <div id="scene-5" class="scene">
+        <div class="content">
+          <div class="logo-box" id="s5-logo">
+            <img src="assets/images/img203.jpg" alt="SASIGLOBAL">
+          </div>
+          <h1 class="title-main" id="s5-title">EL FUTURO ES<br><span>GEOESPACIAL</span></h1>
+          <p class="subtitle-main" id="s5-sub">www.sasiglobal.com</p>
+        </div>
+      </div>
     </div>
 
     <script>
-      window.__timelines = window.__timelines || {};
-      const tl = gsap.timeline({ paused: true });
-      window.__timelines["main"] = tl;
+      // Create particles
+      const comp = document.getElementById('comp');
+      for (let i = 0; i < 20; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        const size = Math.random() * 4 + 2;
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.top = Math.random() * 100 + '%';
+        comp.appendChild(p);
+      }
+
+      // Build master timeline — autoplay + loop
+      const master = gsap.timeline({ repeat: -1, delay: 0.3 });
+
+      // Scene 1: Intro (0s - 3s)
+      master.from("#s1-logo", { scale: 0, rotation: -30, opacity: 0, duration: 0.8, ease: "back.out(1.7)" }, 0.2);
+      master.from("#s1-title", { y: 40, opacity: 0, duration: 0.6, ease: "power4.out" }, 0.5);
+      master.from("#s1-sub", { y: 20, opacity: 0, duration: 0.6, ease: "power3.out" }, 0.8);
+      master.to("#scene-1", { opacity: 0, duration: 0.4 }, 2.6);
+
+      // Scene 2: Engineering (3s - 6s)
+      master.to("#scene-2", { opacity: 1, duration: 0.4 }, 3.0);
+      master.from("#s2-text", { x: -80, opacity: 0, duration: 0.8, ease: "expo.out" }, 3.2);
+      master.from("#s2-bar", { scaleX: 0, duration: 0.6, ease: "power2.inOut" }, 3.6);
+      master.to("#scene-2", { opacity: 0, duration: 0.4 }, 5.6);
+
+      // Scene 3: Global Ops (6s - 9s)
+      master.to("#scene-3", { opacity: 1, duration: 0.4 }, 6.0);
+      master.from("#s3-text", { x: 80, opacity: 0, duration: 0.8, ease: "expo.out" }, 6.2);
+      master.from("#s3-bar", { scaleX: 0, duration: 0.6, ease: "power2.inOut" }, 6.6);
+      master.to("#scene-3", { opacity: 0, duration: 0.4 }, 8.6);
+
+      // Scene 4: Intelligence (9s - 12s)
+      master.to("#scene-4", { opacity: 1, duration: 0.4 }, 9.0);
+      master.from("#s4-text", { scale: 1.15, opacity: 0, duration: 0.8, ease: "power3.out" }, 9.2);
+      master.from("#s4-bar", { scaleX: 0, duration: 0.6, ease: "power2.inOut" }, 9.6);
+      master.to("#scene-4", { opacity: 0, duration: 0.4 }, 11.6);
+
+      // Scene 5: Outro (12s - 15s)
+      master.to("#scene-5", { opacity: 1, duration: 0.4 }, 12.0);
+      master.from("#s5-logo", { y: -40, opacity: 0, duration: 0.8, ease: "back.out" }, 12.2);
+      master.from("#s5-title", { scale: 0.85, opacity: 0, duration: 0.6, ease: "expo.out" }, 12.5);
+      master.from("#s5-sub", { y: 20, opacity: 0, duration: 0.6, ease: "power3.out" }, 12.8);
+      master.to("#scene-5", { opacity: 0, duration: 0.4 }, 14.6);
+
+      // Ambient particles
+      document.querySelectorAll('.particle').forEach(p => {
+        gsap.to(p, {
+          opacity: () => Math.random() * 0.5 + 0.1,
+          x: () => (Math.random() - 0.5) * 300,
+          y: () => (Math.random() - 0.5) * 300,
+          duration: () => Math.random() * 10 + 8,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: () => Math.random() * 5
+        });
+      });
     </script>
   </body>
 </html>

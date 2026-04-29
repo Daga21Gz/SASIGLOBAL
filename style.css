@@ -99,6 +99,184 @@ body {
         0 10px 20px -15px rgba(220, 20, 60, 0.1);
 }
 
+/* Scroll Reveal Animation System */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-child {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-child.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Image Card Hover — Full Color on Hover */
+.group img.opacity-10 {
+    filter: grayscale(100%);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover img.opacity-10 {
+    opacity: 0.35 !important;
+    filter: grayscale(0%);
+    transform: scale(1.08);
+}
+
+/* Corporate Popup Overlay */
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0);
+    -webkit-backdrop-filter: blur(0);
+    backdrop-filter: blur(0);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 24px;
+}
+
+.popup-overlay.popup-visible {
+    background: rgba(15, 23, 42, 0.7);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+}
+
+.popup-card {
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    max-width: 540px;
+    width: 100%;
+    padding: 56px 48px;
+    text-align: center;
+    transform: scale(0.9) translateY(30px);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.2);
+}
+
+.popup-visible .popup-card {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+.popup-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary), #ff4d6d);
+    color: white;
+}
+
+.popup-icon .material-symbols-outlined {
+    font-size: 36px;
+}
+
+.popup-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #0f172a;
+    margin-bottom: 16px;
+}
+
+.popup-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--primary);
+    margin: 0 auto 24px;
+}
+
+.popup-body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.8;
+    color: #475569;
+    margin-bottom: 12px;
+}
+
+.popup-body-sm {
+    font-size: 14px;
+    color: #64748b;
+}
+
+.popup-body strong {
+    color: #0f172a;
+    font-weight: 600;
+}
+
+.popup-footer {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.popup-brand {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: #94a3b8;
+}
+
+.popup-brand span {
+    color: var(--primary);
+}
+
+.popup-close {
+    display: block;
+    width: 100%;
+    margin-top: 28px;
+    padding: 18px;
+    background: #0f172a;
+    color: white;
+    border: none;
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.popup-close:hover {
+    background: var(--primary);
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-6px); }
+    80% { transform: translateX(6px); }
+}
+
 /* Premium Animations */
 .reveal-text {
     opacity: 0;
@@ -123,7 +301,7 @@ body {
 .hero-video-overlay {
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: 20;
     pointer-events: none;
     width: 100%;
     height: 100%;
