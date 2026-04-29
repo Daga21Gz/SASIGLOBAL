@@ -159,63 +159,79 @@ function initContactForm() {
     const form = document.querySelector('#contacto form');
     if (!form) return;
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        const btn = form.querySelector('button');
         const nameInput = form.querySelector('input[type="text"]');
         const emailInput = form.querySelector('input[type="email"]');
         const messageInput = form.querySelector('textarea');
+        
         const clientName = nameInput ? nameInput.value.trim() : '';
         const clientEmail = emailInput ? emailInput.value.trim() : '';
+        const clientMessage = messageInput ? messageInput.value.trim() : '';
 
         if (!clientName || !clientEmail) {
-            // Shake the button
-            const btn = form.querySelector('button');
             btn.style.animation = 'shake 0.4s ease';
             setTimeout(() => btn.style.animation = '', 400);
             return;
         }
 
-        // Create overlay
-        const overlay = document.createElement('div');
-        overlay.className = 'popup-overlay';
-        overlay.innerHTML = `
-            <div class="popup-card">
-                <div class="popup-icon">
-                    <span class="material-symbols-outlined">verified</span>
+        // Estado de "Enviando"
+        const originalBtnText = btn.innerText;
+        btn.disabled = true;
+        btn.innerText = 'ENVIANDO PROTOCOLO...';
+        btn.classList.add('opacity-50');
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: clientName,
+                    email: clientEmail,
+                    message: clientMessage
+                })
+            });
+
+            if (!response.ok) throw new Error('Error en el servidor');
+
+            // Mostrar el popup de éxito (Elite UI)
+            const overlay = document.createElement('div');
+            overlay.className = 'popup-overlay';
+            overlay.innerHTML = `
+                <div class="popup-card">
+                    <div class="popup-icon">
+                        <span class="material-symbols-outlined">verified</span>
+                    </div>
+                    <h3 class="popup-title">Protocolo Exitoso</h3>
+                    <div class="popup-divider"></div>
+                    <p class="popup-body">
+                        Estimado/a <strong>${clientName}</strong>, su requerimiento ha sido procesado por nuestro sistema central.
+                    </p>
+                    <p class="popup-body popup-body-sm">
+                        Se ha enviado una confirmación y nuestra Carta de Presentación a <strong>${clientEmail}</strong>.
+                    </p>
+                    <div class="popup-footer">
+                        <span class="popup-brand">SASI<span>GLOBAL</span> Engineering</span>
+                    </div>
+                    <button class="popup-close" onclick="this.closest('.popup-overlay').remove()">
+                        ENTENDIDO
+                    </button>
                 </div>
-                <h3 class="popup-title">Solicitud Recibida</h3>
-                <div class="popup-divider"></div>
-                <p class="popup-body">
-                    Estimado/a <strong>${clientName}</strong>, agradecemos profundamente su confianza 
-                    en <strong>SASIGLOBAL SAS</strong>.
-                </p>
-                <p class="popup-body popup-body-sm">
-                    Nuestra Carta de Presentación Corporativa y un mensaje de bienvenida 
-                    han sido enviados a <strong>${clientEmail}</strong>.
-                </p>
-                <p class="popup-body popup-body-sm">
-                    Un asesor de nuestro equipo ejecutivo se pondrá en contacto con usted 
-                    en las próximas 24 horas hábiles para atender su requerimiento.
-                </p>
-                <div class="popup-footer">
-                    <span class="popup-brand">SASI<span>GLOBAL</span> Engineering</span>
-                </div>
-                <button class="popup-close" onclick="this.closest('.popup-overlay').remove()">
-                    ENTENDIDO
-                </button>
-            </div>
-        `;
+            `;
+            document.body.appendChild(overlay);
+            requestAnimationFrame(() => overlay.classList.add('popup-visible'));
+            form.reset();
 
-        document.body.appendChild(overlay);
-
-        // Animate in
-        requestAnimationFrame(() => {
-            overlay.classList.add('popup-visible');
-        });
-
-        // Reset form
-        form.reset();
+        } catch (error) {
+            console.error('Error al enviar:', error);
+            alert('Error al conectar con el servidor. Por favor, intente más tarde.');
+        } finally {
+            btn.disabled = false;
+            btn.innerText = originalBtnText;
+            btn.classList.remove('opacity-50');
+        }
     });
 }
 
