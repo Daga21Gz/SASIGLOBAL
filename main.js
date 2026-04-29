@@ -180,7 +180,8 @@ function initContactForm() {
         // Estado de "Enviando"
         const originalBtnText = btn.innerText;
         btn.disabled = true;
-        btn.innerText = 'ENVIANDO PROTOCOLO...';
+        btn.innerText = 'PROCESANDO PROTOCOLO...';
+        btn.style.transform = 'scale(0.95)';
         btn.classList.add('opacity-50');
 
         try {
