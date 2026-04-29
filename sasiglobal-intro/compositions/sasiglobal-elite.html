@@ -8,7 +8,7 @@
   >
     <style>
       [data-composition-id="sasiglobal-elite"] {
-        background: #0a0a0f;
+        background-color: transparent;
         font-family: "Inter", sans-serif;
         color: white;
         overflow: hidden;
@@ -202,6 +202,27 @@
       tl.from("#s5-subtitle", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, 13.0);
 
       window.__timelines = window.__timelines || {};
+      // Particle Creation
+      const pContainer = document.getElementById('particles-container');
+      for(let i=0; i<30; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        const size = Math.random() * 6 + 2;
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.top = Math.random() * 100 + '%';
+        pContainer.appendChild(p);
+        
+        tl.to(p, {
+          opacity: Math.random() * 0.4 + 0.1,
+          x: (Math.random() - 0.5) * 200,
+          y: (Math.random() - 0.5) * 200,
+          duration: 15,
+          ease: "none"
+        }, 0);
+      }
+
       window.__timelines["sasiglobal-elite"] = tl;
     </script>
   </div>
