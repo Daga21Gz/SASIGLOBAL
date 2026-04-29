@@ -53,22 +53,22 @@
 
 <main>
     <!-- Page Header -->
-    <section id="header" data-title="Visión" class="relative pt-64 pb-32 px-8 overflow-hidden">
+    <section id="header" data-title="Visión" class="relative pt-64 pb-32 px-8 overflow-hidden scroll-reveal">
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background z-10"></div>
-            <img alt="Engineering Architecture" class="w-full h-full object-cover opacity-40" src="assets/images/hero_global.png"/>
+            <img alt="Engineering Architecture" class="w-full h-full object-cover opacity-10 grayscale" src="assets/images/hero_global.png"/>
         </div>
-        <div class="relative z-10 max-w-[1440px] mx-auto">
-            <div class="inline-flex items-center gap-3 px-6 py-2 border border-white/10 bg-white/5 backdrop-blur-md mb-8">
+        <div class="relative z-10 max-w-[1440px] mx-auto scroll-child">
+            <div class="inline-flex items-center gap-3 px-6 py-2 border border-black/5 bg-white/5 backdrop-blur-md mb-8">
                 <span class="w-1.5 h-1.5 bg-primary-container"></span>
-                <span class="font-display text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface-variant">Ecosistema de Soluciones</span>
+                <span class="font-display text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface-variant">Soluciones Estratégicas</span>
             </div>
-            <h1 class="font-display text-5xl md:text-8xl text-slate-900 font-extrabold mb-8 tracking-tighter leading-none">
-                INTELIGENCIA <br/>
-                <span class="text-primary-container">INDUSTRIAL</span> PRECISA
+            <h1 class="font-display text-5xl md:text-8xl text-slate-900 font-extrabold mb-8 tracking-tighter leading-none uppercase">
+                SOLUCIONES QUE <br/>
+                <span class="text-primary-container">TRANSFORMAN</span> SU NEGOCIO
             </h1>
             <p class="font-body text-xl md:text-2xl text-on-surface-variant max-w-2xl font-light leading-relaxed">
-                Arquitectura de sistemas avanzados y análisis geoespacial para infraestructuras críticas. Elevamos el rendimiento operativo a través de ingeniería guiada por datos.
+                Convertimos la tecnología geoespacial en herramientas de rentabilidad. Proporcionamos la claridad técnica que usted necesita para liderar grandes proyectos con total seguridad.
             </p>
         </div>
     </section>
@@ -77,64 +77,66 @@
     <section id="servicios" data-title="Servicios" class="max-w-[1440px] mx-auto px-8 py-32">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
             <!-- Large Card -->
-            <div class="md:col-span-8 group">
-                <div class="relative aspect-video overflow-hidden mb-8 border border-black/10">
-                    <img alt="Análisis Estructural" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-30" src="assets/images/solutions_industrial.png"/>
-                    <div class="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent"></div>
-                    <div class="absolute bottom-8 left-8">
-                        <span class="font-tech text-[10px] tracking-[0.5em] text-primary-container uppercase mb-2 block">Módulo 01</span>
-                        <h2 class="font-display text-4xl text-slate-900 font-bold">Arquitectura de Datos Masivos</h2>
+            <div class="md:col-span-8 group scroll-reveal">
+                <div class="relative aspect-video overflow-hidden mb-8 border border-black/5 bg-slate-900">
+                    <img alt="Gestión Territorial" class="w-full h-full object-cover opacity-10 transition-all duration-1000" src="assets/images/solutions_industrial.png"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
+                    <div class="absolute bottom-8 left-8 scroll-child">
+                        <span class="font-display text-[10px] tracking-[0.5em] text-primary-container uppercase mb-2 block font-bold">Capacidad 01</span>
+                        <h2 class="font-display text-4xl text-white font-bold uppercase tracking-tight">Gestión Territorial Inteligente</h2>
                     </div>
                 </div>
-                <p class="font-body text-on-surface-variant text-lg mb-8 max-w-2xl">
-                    Modelado CAD paramétrico y simulaciones de estrés en entornos extremos. Garantizamos la integridad operativa de componentes críticos antes de la fase de manufactura física.
-                </p>
-                <div class="flex gap-4">
-                    <div class="px-4 py-2 border border-black/5 font-tech text-[10px] text-slate-900 tracking-widest uppercase">Simulación FEM</div>
-                    <div class="px-4 py-2 border border-black/5 font-tech text-[10px] text-slate-900 tracking-widest uppercase">RTK / PPK Optimized</div>
+                <div class="scroll-child">
+                    <p class="font-body text-on-surface-variant text-lg mb-8 max-w-2xl">
+                        Obtenga una visión total de sus activos. Generamos mapas y modelos digitales de alta precisión que le permiten planificar, gestionar y proteger su territorio sin márgenes de error.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="px-6 py-3 border border-black/5 font-display text-[10px] text-slate-900 font-bold tracking-widest uppercase bg-white">Mapas de Precisión</div>
+                        <div class="px-6 py-3 border border-black/5 font-display text-[10px] text-slate-900 font-bold tracking-widest uppercase bg-white">Monitoreo de Activos</div>
+                    </div>
                 </div>
             </div>
 
             <!-- Small Card -->
-            <div class="md:col-span-4 flex flex-col justify-between p-12 border border-black/10 bg-white hover:bg-slate-50 transition-all relative overflow-hidden group">
+            <div class="md:col-span-4 flex flex-col justify-between p-12 border border-black/10 bg-white hover:border-primary-container transition-all relative overflow-hidden group scroll-reveal">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 blur-[100px] group-hover:bg-primary-container/10 transition-all"></div>
-                <div>
-                    <span class="material-symbols-outlined text-primary-container text-5xl mb-8">satellite_alt</span>
-                    <h3 class="font-display text-3xl text-white font-bold mb-6">Topometría Láser</h3>
+                <div class="scroll-child">
+                    <span class="material-symbols-outlined text-primary-container text-5xl mb-8">straighten</span>
+                    <h3 class="font-display text-3xl text-slate-900 font-bold mb-6 uppercase tracking-tight">Ingeniería de Detalle</h3>
                     <p class="font-body text-on-surface-variant leading-relaxed mb-8">
-                        Escaneo LiDAR de alta fidelidad para mapeo de as-built y control dimensional. Precisión sub-milimétrica para auditorías de ensamblaje.
+                        Evite sobrecostos y retrasos. Utilizamos escaneo láser para capturar cada milímetro de su infraestructura, entregándole información exacta para construcciones y reformas sin sorpresas.
                     </p>
                 </div>
-                <a href="#" class="inline-flex items-center gap-4 font-display text-[10px] font-bold text-white uppercase tracking-[0.3em] group/link">
-                    Especificaciones <span class="material-symbols-outlined text-primary-container transition-transform group-hover/link:translate-x-2">arrow_forward</span>
+                <a href="index.html#contacto" class="inline-flex items-center gap-4 font-display text-[11px] font-black text-slate-900 uppercase tracking-[0.3em] group/link scroll-child">
+                    MÁS INFORMACIÓN <span class="material-symbols-outlined text-primary-container transition-transform group-hover/link:translate-x-2">arrow_forward</span>
                 </a>
             </div>
 
             <!-- Automation Section -->
-            <div class="md:col-span-12 mt-24">
+            <div class="md:col-span-12 mt-24 scroll-reveal">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
-                    <div class="order-2 md:order-1">
+                    <div class="order-2 md:order-1 scroll-child">
                         <div class="inline-flex items-center gap-3 mb-12">
                             <div class="w-12 h-[1px] bg-primary-container"></div>
-                            <span class="font-tech text-[10px] tracking-[0.5em] text-on-surface-variant uppercase">Automatización 4.0</span>
+                            <span class="font-display text-[10px] tracking-[0.5em] text-on-surface-variant uppercase font-bold">Vanguardia Operativa</span>
                         </div>
                         <div class="space-y-12">
                             <div class="group cursor-pointer">
-                                <h3 class="font-display text-2xl text-white font-bold mb-4 group-hover:text-primary-container transition-colors">Integración Robótica</h3>
-                                <p class="font-body text-on-surface-variant leading-relaxed">Despliegue de células de manufactura autónomas coordinadas mediante protocolos IIoT de baja latencia.</p>
+                                <h3 class="font-display text-2xl text-slate-900 font-bold mb-4 group-hover:text-primary-container transition-colors uppercase tracking-tight">Eficiencia Automatizada</h3>
+                                <p class="font-body text-on-surface-variant leading-relaxed">Optimizamos sus procesos operativos mediante tecnología que trabaja por usted, reduciendo tiempos de entrega y garantizando calidad constante.</p>
                             </div>
-                            <div class="group cursor-pointer border-t border-white/5 pt-12">
-                                <h3 class="font-display text-2xl text-white font-bold mb-4 group-hover:text-primary-container transition-colors">Sistemas SCADA</h3>
-                                <p class="font-body text-on-surface-variant leading-relaxed">Arquitecturas de supervisión distribuidas con telemetría en tiempo real y redundancia crítica de datos.</p>
+                            <div class="group cursor-pointer border-t border-black/5 pt-12">
+                                <h3 class="font-display text-2xl text-slate-900 font-bold mb-4 group-hover:text-primary-container transition-colors uppercase tracking-tight">Control en Tiempo Real</h3>
+                                <p class="font-body text-on-surface-variant leading-relaxed">Tome decisiones informadas en el acto. Nuestras soluciones le permiten supervisar sus proyectos desde cualquier lugar con datos actualizados al minuto.</p>
                             </div>
-                            <div class="group cursor-pointer border-t border-white/5 pt-12">
-                                <h3 class="font-display text-2xl text-white font-bold mb-4 group-hover:text-primary-container transition-colors">Visión Artificial</h3>
-                                <p class="font-body text-on-surface-variant leading-relaxed">Inspección automatizada de defectos mediante redes neuronales convolucionales y óptica de alta precisión.</p>
+                            <div class="group cursor-pointer border-t border-black/5 pt-12">
+                                <h3 class="font-display text-2xl text-slate-900 font-bold mb-4 group-hover:text-primary-container transition-colors uppercase tracking-tight">Seguridad e Integridad</h3>
+                                <p class="font-body text-on-surface-variant leading-relaxed">Protegemos su inversión. Implementamos sistemas de inspección avanzados que detectan riesgos antes de que se conviertan en problemas.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="order-1 md:order-2 aspect-square md:aspect-auto md:h-full border border-white/10 overflow-hidden">
-                        <img alt="Industrial Automation" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" src="assets/images/tech_high.png"/>
+                    <div class="order-1 md:order-2 aspect-square md:aspect-auto md:h-full border border-black/10 overflow-hidden bg-slate-900 group scroll-child">
+                        <img alt="Industrial Automation" class="w-full h-full object-cover opacity-10 transition-all duration-1000" src="assets/images/tech_high.png"/>
                     </div>
                 </div>
             </div>
@@ -142,13 +144,13 @@
     </section>
 
     <!-- Call to Action -->
-    <section id="cta" data-title="Contacto" class="bg-white py-32 px-8">
-        <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
-            <h2 class="font-display text-4xl md:text-6xl text-black font-black tracking-tighter max-w-2xl leading-none">
-                ¿LISTO PARA ESCALAR SU INFRAESTRUCTURA?
+    <section id="cta" data-title="Contacto" class="bg-slate-950 py-32 px-8 scroll-reveal">
+        <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-12 scroll-child">
+            <h2 class="font-display text-4xl md:text-6xl text-white font-black tracking-tighter max-w-2xl leading-none uppercase">
+                ¿LISTO PARA LLEVAR SU PROYECTO AL <span class="text-primary-container">SIGUIENTE NIVEL</span>?
             </h2>
-            <a href="index.html#contacto" class="bg-slate-900 text-white px-12 py-6 font-display font-black uppercase tracking-[0.2em] text-xs hover:bg-primary-container transition-all shrink-0">
-                Iniciar Consultoría
+            <a href="index.html#contacto" class="bg-white text-slate-950 px-12 py-6 font-display font-black uppercase tracking-[0.2em] text-xs hover:bg-primary-container hover:text-white transition-all shrink-0">
+                Iniciar Protocolo de Contacto
             </a>
         </div>
     </section>
