@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMouseFollow();
     initContactForm();
     initGISMap();
+    initSupabaseProjects();
     
     // Header-dependent initialization
     window.addEventListener('headerLoaded', () => {
@@ -216,4 +217,87 @@ function initContactForm() {
         // Reset form
         form.reset();
     });
+}
+
+/**
+ * Gestión de Contenido Dinámica: Supabase Integration
+ */
+async function initSupabaseProjects() {
+    const projectsGrid = document.getElementById('projects-grid');
+    if (!projectsGrid) return;
+
+    // Configuración de Supabase
+    const SUPABASE_URL = 'https://iaogjtqigfpmqdshuawl.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_2ajudZKoCMicFhsfj6kztg_c32wI-YM';
+    
+    // Verificar si la librería de Supabase está cargada
+    if (typeof supabase === 'undefined') {
+        console.warn('Supabase SDK not loaded yet.');
+        return;
+    }
+
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    try {
+        // Traer los proyectos desde la tabla 'proyectos'
+        const { data: proyectos, error } = await supabaseClient
+            .from('proyectos')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        // Limpiar skeleton loaders
+        projectsGrid.innerHTML = '';
+
+        if (!proyectos || proyectos.length === 0) {
+            projectsGrid.innerHTML = '<p class="text-slate-400 font-light italic col-span-full text-center py-20 uppercase tracking-widest text-[10px]">No hay proyectos activos registrados en el Cloud.</p>';
+            return;
+        }
+
+        // Renderizar proyectos con diseño Elite
+        proyectos.forEach(proyecto => {
+            const projectCard = `
+                <div class="group relative bg-white border border-black/5 overflow-hidden scroll-child">
+                    <!-- Image Container with Elite Hover -->
+                    <div class="relative h-80 overflow-hidden bg-slate-100">
+                        <img src="${proyecto.imagen_url || 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80'}" 
+                             alt="${proyecto.titulo}"
+                             class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110">
+                        <div class="absolute top-4 left-4">
+                            <span class="px-4 py-1.5 bg-white/90 backdrop-blur-md text-[10px] font-black uppercase tracking-widest text-slate-900 border border-black/5">
+                                ${proyecto.categoria || 'Ingeniería'}
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-8 border-t border-black/5">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-display text-2xl font-extrabold text-slate-900 leading-tight uppercase tracking-tighter">
+                                ${proyecto.titulo}
+                            </h3>
+                            <span class="text-[10px] font-tech text-slate-400 font-bold">${proyecto.anio || '2024'}</span>
+                        </div>
+                        <p class="text-slate-500 font-body text-xs leading-relaxed mb-6 line-clamp-3">
+                            ${proyecto.descripcion || 'Solución geoespacial avanzada ejecutada por SASIGLOBAL.'}
+                        </p>
+                        <div class="flex items-center justify-between pt-6 border-t border-black/[0.03]">
+                            <div class="text-[9px] uppercase tracking-widest text-slate-400 font-bold">
+                                Cliente: <span class="text-slate-900">${proyecto.cliente || 'Privado'}</span>
+                            </div>
+                            <button class="text-primary-container hover:text-slate-900 transition-colors">
+                                <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            projectsGrid.insertAdjacentHTML('beforeend', projectCard);
+        });
+
+    } catch (err) {
+        console.error('Error sincronizando con Supabase:', err);
+        projectsGrid.innerHTML = '<p class="text-red-500 text-xs uppercase tracking-widest font-black col-span-full text-center">Error de Sincronización Cloud</p>';
+    }
 }
