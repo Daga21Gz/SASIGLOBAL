@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initPagination();
     initMouseFollow();
     initContactForm();
+    initGISMap();
     
     // Header-dependent initialization
     window.addEventListener('headerLoaded', () => {

@@ -1,0 +1,35 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "ciudad": "Bogotá",
+                "tipo": "Sede Principal / Inteligencia",
+                "descripcion": "Centro de comando y análisis geoespacial nacional."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.0721,
+                    4.7110
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "ciudad": "Medellín",
+                "tipo": "Nodo Regional / Operaciones",
+                "descripcion": "Base estratégica para levantamientos e ingeniería avanzada."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.5643,
+                    6.2442
+                ]
+            }
+        }
+    ]
+}
