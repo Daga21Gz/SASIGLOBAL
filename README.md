@@ -1,47 +1,53 @@
-# SASIGLOBAL SAS | Global Geospatial Authority
+# SASIGLOBAL | Elite Enterprise Portfolio
 
-![SASIGLOBAL Banner](assets/images/hero_global.png)
+## 🌐 Visión General
+SASIGLOBAL SAS es una plataforma de ingeniería geoespacial de alta gama, modernizada para ofrecer una experiencia de usuario sofisticada, intuitiva y premium. El proyecto utiliza una arquitectura de **Orquestación de Componentes Globales** para garantizar la consistencia de marca y la eficiencia técnica en todas sus vistas.
 
-## Enterprise-Grade Geospatial Engineering & Strategic Intelligence
+## 🚀 Arquitectura Técnica
 
-SASIGLOBAL SAS is a premier engineering firm specializing in high-precision geospatial solutions, aerial photogrammetry, and advanced structural analysis. We deliver state-of-the-art technological ecosystems for critical infrastructure, government agencies, and global enterprise operations.
+### 1. Global Component Orchestrator (`assets/js/components.js`)
+Centraliza la lógica del `Header` y `Footer`. 
+- **Inyección Dinámica**: Los componentes se cargan mediante fetch en placeholders específicos (`#global-header`, `#global-footer`).
+- **Sincronización de Eventos**: Dispara el evento `headerLoaded` para permitir que otros scripts (como `main.js`) inicialicen efectos de scroll y menús móviles de forma segura una vez que el DOM está completo.
 
-### 🌐 "Elite Enterprise" Modernization (2026)
+### 2. Diseño Visual "VIP Elite"
+- **Paleta de Colores**: Blanco, Gris Seda, Negro Profundo y Crimson SASI (#dc143c).
+- **Glassmorphism**: Uso extensivo de fondos translúcidos con `backdrop-blur` para una estética moderna y limpia.
+- **Background Orchestration**: Fondo dinámico (`.bg-orchestrator`) que equilibra legibilidad y profundidad visual sin saturar la experiencia del usuario.
 
-This repository has been modernized to the **Elite Enterprise** standard, featuring:
-- **VIP Design System**: A high-contrast Light Mode interface with premium Dark Slate structural framing.
-- **Visual Excellence**: GPU-accelerated background blurs, fluid radial gradients, and elite interaction states.
-- **Technical Stability**: 100% localized asset infrastructure to eliminate dependency on external CDNs or image APIs.
-- **Brand Persistence**: Consistent corporate identity across all five strategic modules and browser favicons.
+### 3. Optimización de Activos
+- **Localidad**: Se han eliminado dependencias de imágenes externas (Unsplash) para evitar errores 404, migrando a activos locales verificados en `assets/images/`.
+- **Formato**: Uso preferente de PNG/SVG de alta calidad para garantizar nitidez en pantallas de alta densidad.
 
-### 🚀 Technology Stack
-- **Architecture**: Semantic HTML5 & GPU-Accelerated CSS3.
-- **Design System**: High-fidelity glassmorphism and "Crystal VIP" aesthetics.
-- **Logic**: Zero-dependency optimized JavaScript for low-latency performance.
-- **Assets**: Optimized local PNG/JPG asset infrastructure.
+## 🛠️ Tecnologías
+- **Core**: HTML5, Vanilla JavaScript.
+- **Styling**: Tailwind CSS (CDN para desarrollo, preparado para CLI).
+- **Animations**: CSS3 (Cubic-Bezier) e Intersection Observer API.
+- **Tooling**: `npx autoskills` para auditorías de calidad y mejores prácticas.
 
-### 📂 Repository Structure
+## 📁 Estructura del Proyecto
 ```text
-├── assets/             # Core brand assets and high-fidelity imagery
-│   ├── images/         # Premium local photographic assets (Localized)
-│   └── logo.svg        # Official corporate branding
-├── docs/               # Technical documentation
-│   └── ELITE_MODERNIZATION.md # Detailed technical walkthrough
-├── index.html          # Central gateway and strategic hub
-├── main.js             # Core interaction logic & scroll sync
-├── style.css           # Global design tokens and design system
-└── [solutions|operations|expertise|insights|company].html # Core strategic modules
+/
+├── assets/
+│   ├── js/
+│   │   └── components.js     # Orquestador central
+│   ├── images/               # Activos locales (PNG/SVG)
+│   └── logo.svg              # Identidad corporativa
+├── main.js                   # Lógica de interacciones y scroll
+├── style.css                 # Estilos core y animaciones premium
+├── index.html                # Portal Principal
+├── solutions.html            # Portafolio de Soluciones
+├── operations.html           # Red Global de Operaciones
+├── expertise.html            # Autoridad Técnica
+├── insights.html             # Inteligencia de Datos
+└── company.html              # Visión Corporativa
 ```
 
-### 🛠 Deployment & Development
-1.  **Clone the repository**:
-    ```bash
-    git clone https://github.com/Daga21Gz/SASIGLOBALSAS.git
-    ```
-2.  **Run locally**:
-    Open `index.html` in any modern browser.
-3.  **Production Readiness**:
-    Migrate to Tailwind CLI for optimized production builds.
+## 📋 Guía de Mantenimiento
+Para añadir una nueva página al ecosistema SASIGLOBAL:
+1. Incluya los placeholders `<header id="global-header"></header>` y `<footer id="global-footer"></footer>`.
+2. Importe `assets/js/components.js` **antes** de `main.js`.
+3. El sistema inyectará automáticamente la navegación actualizada y el footer corporativo.
 
 ---
-© 2026 SASIGLOBAL SAS. All rights reserved. | *Confidential Engineering Document*
+**SASIGLOBAL SAS** | *Autoridad Geoespacial. Ingeniería de Precisión Industrial.*

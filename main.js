@@ -1,10 +1,17 @@
+/**
+ * SASIGLOBAL Core Interactions
+ * Managed by the "Elite Enterprise" Orchestration System.
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
     initRevealAnimations();
     initPagination();
-    initMobileMenu();
-    initHeaderScroll();
     initMouseFollow();
-    initActiveNavLink();
+    
+    // Header-dependent initialization
+    window.addEventListener('headerLoaded', () => {
+        initHeaderScroll();
+    });
 });
 
 /**
@@ -36,11 +43,9 @@ function initPagination() {
     const sections = document.querySelectorAll('section[id]');
     if (sections.length === 0) return;
 
-    // Remove existing pagination if any
     const existingNav = document.querySelector('.pagination-dots');
     if (existingNav) existingNav.remove();
 
-    // Create pagination container
     const nav = document.createElement('div');
     nav.className = 'pagination-dots hidden lg:flex';
     
@@ -58,7 +63,6 @@ function initPagination() {
 
     document.body.appendChild(nav);
 
-    // Update active dot on scroll
     const updateActiveDot = () => {
         let current = '';
         const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
@@ -81,40 +85,6 @@ function initPagination() {
 
     window.addEventListener('scroll', updateActiveDot);
     updateActiveDot();
-}
-
-/**
- * Mobile Menu Toggle
- */
-function initMobileMenu() {
-    const menuBtn = document.querySelector('#mobile-menu-btn');
-    const menu = document.querySelector('#mobile-menu');
-    const closeBtn = document.querySelector('#close-menu');
-    
-    if (menuBtn && menu) {
-        menuBtn.addEventListener('click', () => {
-            menu.classList.remove('hidden');
-            menu.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        });
-    }
-
-    if (closeBtn && menu) {
-        closeBtn.addEventListener('click', () => {
-            menu.classList.add('hidden');
-            menu.classList.remove('flex');
-            document.body.style.overflow = '';
-        });
-    }
-
-    // Close on link click
-    menu?.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            menu.classList.add('hidden');
-            menu.classList.remove('flex');
-            document.body.style.overflow = '';
-        });
-    });
 }
 
 /**
@@ -144,32 +114,5 @@ function initMouseFollow() {
         const y = (e.clientY / window.innerHeight) * 100;
         document.body.style.setProperty('--mouse-x', `${x}%`);
         document.body.style.setProperty('--mouse-y', `${y}%`);
-    });
-}
-
-/**
- * Set active class on nav link based on current page
- */
-function initActiveNavLink() {
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    
-    // Desktop Nav
-    document.querySelectorAll('.nav-link').forEach(link => {
-        const linkPath = link.getAttribute('href').split('/').pop();
-        if (linkPath === currentPath) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
-
-    // Mobile Nav
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-        const linkPath = link.getAttribute('href').split('/').pop();
-        if (linkPath === currentPath) {
-            link.classList.add('text-primary-container');
-        } else {
-            link.classList.remove('text-primary-container');
-        }
     });
 }
