@@ -236,103 +236,91 @@ function initContactForm() {
 }
 
 /**
- * Portafolio Vivo: GIS Map Integration (MapLibre + Cloudflare R2)
+ * Portafolio Vivo: GIS Map Integration (Robusto)
  */
 function initGISMap() {
     const mapContainer = document.getElementById('map');
     if (!mapContainer) return;
 
-    // Datos inyectados directamente para bypass de seguridad (Tracking Prevention)
-    const sedesData = {
-        "type": "FeatureCollection",
-        "features": [
-            {
-                "type": "Feature",
-                "properties": {
-                    "ciudad": "Bogotá",
-                    "tipo": "Sede Principal / Inteligencia",
-                    "descripcion": "Centro de comando y análisis geoespacial nacional."
+    // Agregar indicador de carga visual
+    mapContainer.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:white;font-family:sans-serif;font-size:10px;letter-spacing:2px;">INICIALIZANDO SISTEMA GIS...</div>';
+
+    // Función de inicialización
+    const startMap = () => {
+        if (typeof maplibregl === 'undefined') {
+            console.log('Esperando a MapLibre...');
+            setTimeout(startMap, 500); // Reintentar en 500ms
+            return;
+        }
+
+        mapContainer.innerHTML = ''; // Limpiar indicador
+
+        const sedesData = {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "properties": { "ciudad": "Bogotá", "tipo": "Sede Principal", "descripcion": "Inteligencia Geoespacial." },
+                    "geometry": { "type": "Point", "coordinates": [-74.0721, 4.7110] }
                 },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-74.0721, 4.7110]
+                {
+                    "type": "Feature",
+                    "properties": { "ciudad": "Medellín", "tipo": "Nodo Regional", "descripcion": "Operaciones LiDAR." },
+                    "geometry": { "type": "Point", "coordinates": [-75.5643, 6.2442] }
                 }
-            },
-            {
-                "type": "Feature",
-                "properties": {
-                    "ciudad": "Medellín",
-                    "tipo": "Nodo Regional / Operaciones",
-                    "descripcion": "Base estratégica para levantamientos e ingeniería avanzada."
-                },
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-75.5643, 6.2442]
-                }
-            }
-        ]
+            ]
+        };
+
+        try {
+            const map = new maplibregl.Map({
+                container: 'map',
+                style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+                center: [-74.5, 5.5], 
+                zoom: 5,
+                scrollZoom: false
+            });
+
+            map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+
+            map.on('load', () => {
+                map.addSource('sedes', { type: 'geojson', data: sedesData });
+                map.addLayer({
+                    id: 'sedes-points',
+                    type: 'circle',
+                    source: 'sedes',
+                    paint: {
+                        'circle-radius': 10,
+                        'circle-color': '#dc143c',
+                        'circle-stroke-width': 3,
+                        'circle-stroke-color': '#ffffff'
+                    }
+                });
+
+                // Popups Premium
+                map.on('click', 'sedes-points', (e) => {
+                    const props = e.features[0].properties;
+                    new maplibregl.Popup({ className: 'elite-popup', closeButton: false })
+                        .setLngLat(e.features[0].geometry.coordinates)
+                        .setHTML(`
+                            <div style="padding:15px; min-width:150px;">
+                                <h4 style="margin:0;color:#dc143c;font-size:12px;text-transform:uppercase;">${props.ciudad}</h4>
+                                <p style="margin:5px 0;font-weight:bold;font-size:14px;color:#0f172a;">${props.tipo}</p>
+                                <p style="margin:0;font-size:11px;color:#64748b;">${props.descripcion}</p>
+                            </div>
+                        `)
+                        .addTo(map);
+                });
+
+                map.on('mouseenter', 'sedes-points', () => map.getCanvas().style.cursor = 'pointer');
+                map.on('mouseleave', 'sedes-points', () => map.getCanvas().style.cursor = '');
+            });
+        } catch (e) {
+            console.error('Error al crear el mapa:', e);
+            mapContainer.innerHTML = '<div style="color:white;padding:20px;">Error al cargar el motor de mapas. Revise la conexión.</div>';
+        }
     };
 
-    // Asegurarse de que la librería está cargada
-    if (typeof maplibregl === 'undefined') {
-        console.warn('MapLibre GL JS not loaded yet.');
-        return;
-    }
-
-    const map = new maplibregl.Map({
-        container: 'map',
-        style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
-        center: [-74.5, 5.5], 
-        zoom: 5.5,
-        scrollZoom: false
-    });
-
-    map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
-
-    map.on('load', () => {
-        // Agregar la fuente de datos inyectada
-        map.addSource('sedes', {
-            type: 'geojson',
-            data: sedesData
-        });
-
-        map.addLayer({
-            id: 'sedes-points',
-            type: 'circle',
-            source: 'sedes',
-            paint: {
-                'circle-radius': 8,
-                'circle-color': '#dc143c',
-                'circle-stroke-width': 2,
-                'circle-stroke-color': '#ffffff'
-            }
-        });
-
-        map.on('click', 'sedes-points', (e) => {
-            const coordinates = e.features[0].geometry.coordinates.slice();
-            const props = e.features[0].properties;
-
-            new maplibregl.Popup({ className: 'elite-popup', closeButton: false })
-                .setLngLat(coordinates)
-                .setHTML(`
-                    <div class="p-4 font-display">
-                        <h3 class="text-primary-container font-black uppercase text-xs tracking-widest mb-1">${props.ciudad}</h3>
-                        <p class="text-slate-900 font-bold text-sm mb-2 uppercase">${props.tipo}</p>
-                        <p class="text-slate-600 text-[10px] leading-relaxed font-light">${props.descripcion}</p>
-                    </div>
-                `)
-                .addTo(map);
-            
-            map.flyTo({
-                center: coordinates,
-                zoom: 12,
-                speed: 0.8
-            });
-        });
-
-        map.on('mouseenter', 'sedes-points', () => map.getCanvas().style.cursor = 'pointer');
-        map.on('mouseleave', 'sedes-points', () => map.getCanvas().style.cursor = '');
-    });
+    startMap();
 }
 
 /**
