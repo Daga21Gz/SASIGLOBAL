@@ -197,27 +197,36 @@ function initContactForm() {
 
             if (!response.ok) throw new Error('Error en el servidor');
 
-            // Mostrar el popup de éxito (Elite UI v2.0)
+            // Mostrar el popup de éxito (Masterpiece v3.0)
             const overlay = document.createElement('div');
             overlay.className = 'popup-overlay';
             overlay.innerHTML = `
                 <div class="popup-card">
-                    <div class="popup-icon">
-                        <span class="material-symbols-outlined">verified</span>
+                    <div class="popup-icon-container">
+                        <div class="popup-icon-pulse"></div>
+                        <div class="popup-icon">
+                            <span class="material-symbols-outlined">verified</span>
+                        </div>
                     </div>
+                    
                     <h3 class="popup-title">Protocolo Exitoso</h3>
                     <span class="popup-subtitle">Confirmación de Despliegue</span>
                     <div class="popup-divider"></div>
+                    
                     <p class="popup-body">
-                        Estimado/a <strong>${clientName}</strong>, su requerimiento ha sido procesado por nuestro sistema central de inteligencia.
+                        Estimado/a <strong>${clientName}</strong>, su requerimiento ha sido procesado por nuestro sistema central de inteligencia geoespacial.
                     </p>
+                    
                     <div class="popup-body-sm">
+                        <span style="font-weight:800; text-transform:uppercase; font-size:10px; letter-spacing:0.1em; display:block; margin-bottom:0.5rem; color:var(--primary);">Destino de Notificación:</span>
                         Se ha enviado una copia del protocolo y nuestra Carta de Presentación a:<br>
-                        <strong style="color:#0f172a; text-transform:lowercase;">${clientEmail}</strong>
+                        <strong style="color:#020617; font-size:15px; text-transform:lowercase;">${clientEmail}</strong>
                     </div>
+                    
                     <div class="popup-footer">
-                        <span class="popup-brand">SASI<span>GLOBAL</span> Engineering</span>
+                        <span class="popup-brand">SASI<span>GLOBAL</span> Engineering & Intelligence</span>
                     </div>
+                    
                     <button class="popup-close" onclick="this.closest('.popup-overlay').remove()">
                         FINALIZAR TRANSMISIÓN
                     </button>
