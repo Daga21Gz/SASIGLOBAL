@@ -153,95 +153,128 @@ body {
     padding: 24px;
 }
 
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 24px;
+}
+
 .popup-overlay.popup-visible {
-    background: rgba(15, 23, 42, 0.7);
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
+    opacity: 1;
+    visibility: visible;
 }
 
 .popup-card {
-    background: rgba(255, 255, 255, 0.95);
-    -webkit-backdrop-filter: blur(30px);
-    backdrop-filter: blur(30px);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    max-width: 540px;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(220, 20, 60, 0.2);
+    box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.4);
     width: 100%;
-    padding: 56px 48px;
+    max-width: 540px;
+    padding: 4rem 3.5rem;
+    position: relative;
     text-align: center;
     transform: scale(0.9) translateY(30px);
-    opacity: 0;
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.2);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .popup-visible .popup-card {
     transform: scale(1) translateY(0);
-    opacity: 1;
 }
 
 .popup-icon {
-    width: 72px;
-    height: 72px;
-    margin: 0 auto 24px;
+    width: 80px;
+    height: 80px;
+    background: #0f172a;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--primary), #ff4d6d);
-    color: white;
+    margin: 0 auto 2.5rem;
+    box-shadow: 0 0 40px rgba(220, 20, 60, 0.2);
 }
 
-.popup-icon .material-symbols-outlined {
-    font-size: 36px;
+.popup-icon span {
+    font-size: 40px;
+    color: #ffffff;
+    animation: successPulse 2s infinite ease-in-out;
+}
+
+@keyframes successPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
 }
 
 .popup-title {
     font-family: var(--font-display);
-    font-size: 28px;
+    font-size: 1.8rem;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.3em;
     color: #0f172a;
-    margin-bottom: 16px;
+    margin-bottom: 0.5rem;
+}
+
+.popup-subtitle {
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.6em;
+    margin-bottom: 2.5rem;
+    display: block;
 }
 
 .popup-divider {
-    width: 60px;
+    width: 40px;
     height: 3px;
     background: var(--primary);
-    margin: 0 auto 24px;
+    margin: 0 auto 2.5rem;
 }
 
 .popup-body {
     font-family: var(--font-body);
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.8;
     color: #475569;
-    margin-bottom: 12px;
-}
-
-.popup-body-sm {
-    font-size: 14px;
-    color: #64748b;
+    margin-bottom: 1.5rem;
 }
 
 .popup-body strong {
     color: #0f172a;
-    font-weight: 600;
+}
+
+.popup-body-sm {
+    font-size: 13px;
+    color: #94a3b8;
+    background: #f8fafc;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    line-height: 1.6;
 }
 
 .popup-footer {
-    margin-top: 28px;
-    padding-top: 20px;
+    margin-top: 3rem;
+    padding-top: 2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .popup-brand {
     font-family: var(--font-display);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 0.3em;
-    color: #94a3b8;
+    letter-spacing: 0.4em;
+    color: #cbd5e1;
 }
 
 .popup-brand span {
@@ -251,8 +284,8 @@ body {
 .popup-close {
     display: block;
     width: 100%;
-    margin-top: 28px;
-    padding: 18px;
+    margin-top: 3rem;
+    padding: 22px;
     background: #0f172a;
     color: white;
     border: none;
@@ -260,13 +293,15 @@ body {
     font-size: 11px;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 0.4em;
+    letter-spacing: 0.5em;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .popup-close:hover {
     background: var(--primary);
+    letter-spacing: 0.6em;
+    box-shadow: 0 15px 30px rgba(220, 20, 60, 0.3);
 }
 
 @keyframes shake {

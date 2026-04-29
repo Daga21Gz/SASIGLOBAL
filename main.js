@@ -197,7 +197,7 @@ function initContactForm() {
 
             if (!response.ok) throw new Error('Error en el servidor');
 
-            // Mostrar el popup de éxito (Elite UI)
+            // Mostrar el popup de éxito (Elite UI v2.0)
             const overlay = document.createElement('div');
             overlay.className = 'popup-overlay';
             overlay.innerHTML = `
@@ -206,18 +206,20 @@ function initContactForm() {
                         <span class="material-symbols-outlined">verified</span>
                     </div>
                     <h3 class="popup-title">Protocolo Exitoso</h3>
+                    <span class="popup-subtitle">Confirmación de Despliegue</span>
                     <div class="popup-divider"></div>
                     <p class="popup-body">
-                        Estimado/a <strong>${clientName}</strong>, su requerimiento ha sido procesado por nuestro sistema central.
+                        Estimado/a <strong>${clientName}</strong>, su requerimiento ha sido procesado por nuestro sistema central de inteligencia.
                     </p>
-                    <p class="popup-body popup-body-sm">
-                        Se ha enviado una confirmación y nuestra Carta de Presentación a <strong>${clientEmail}</strong>.
-                    </p>
+                    <div class="popup-body-sm">
+                        Se ha enviado una copia del protocolo y nuestra Carta de Presentación a:<br>
+                        <strong style="color:#0f172a; text-transform:lowercase;">${clientEmail}</strong>
+                    </div>
                     <div class="popup-footer">
                         <span class="popup-brand">SASI<span>GLOBAL</span> Engineering</span>
                     </div>
                     <button class="popup-close" onclick="this.closest('.popup-overlay').remove()">
-                        ENTENDIDO
+                        FINALIZAR TRANSMISIÓN
                     </button>
                 </div>
             `;
