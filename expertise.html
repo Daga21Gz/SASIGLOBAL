@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SASIGLOBAL | Experticia y Autoridad Técnica</title>
+    <meta name="description" content="SASIGLOBAL SAS - Red operativa regional y monitoreo geoespacial en tiempo real.">
+    <link rel="icon" type="image/jpeg" href="assets/images/img203.jpg">
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@100;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-container": "#dc143c",
+                        "on-primary-container": "#fff1f0",
+                        "background": "#f8f9fa",
+                        "surface": "#ffffff",
+                        "on-background": "#0f172a",
+                        "on-surface-variant": "#64748b",
+                        "outline": "rgba(0, 0, 0, 0.05)",
+                    },
+                    borderRadius: {
+                        "none": "0",
+                        "sm": "0",
+                        "DEFAULT": "0",
+                        "lg": "0",
+                        "xl": "0",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "display": ["Outfit", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "tech": ["Space Grotesk", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="selection:bg-primary selection:text-white">
+    <!-- VIP Background Orchestration -->
+    <div class="bg-orchestrator"></div>
+    <div class="bg-texture"></div>
+
+    <!-- Main Navigation -->
+    <nav class="fixed w-full z-[100] transition-all duration-500" id="main-nav">
+        <div class="flex justify-between items-center px-6 md:px-16 py-8 w-full max-w-[1440px] mx-auto">
+            <div class="flex items-center gap-4 group cursor-pointer" onclick="window.location.href='index.html'">
+                <div class="relative w-12 h-12 flex items-center justify-center bg-white p-1 shadow-[0_0_20px_rgba(220,20,60,0.3)] group-hover:scale-110 transition-transform overflow-hidden">
+                    <img src="assets/images/img203.jpg" alt="SASIGLOBAL Logo" class="w-full h-full object-contain">
+                </div>
+                <div class="flex flex-col leading-none">
+                    <span class="font-display text-2xl font-extrabold tracking-[0.2em] text-white uppercase">SASI<span class="text-primary-container">GLOBAL</span></span>
+                    <span class="font-tech text-[10px] tracking-[0.5em] text-slate-400 uppercase mt-1">Ingeniería Geoespacial</span>
+                </div>
+            </div>
+            <nav class="hidden lg:flex items-center gap-10 font-display font-medium tracking-[0.15em] uppercase text-[11px]">
+                <a class="nav-link" href="index.html">Inicio</a>
+                <a class="nav-link" href="solutions.html">Soluciones</a>
+                <a class="nav-link" href="operations.html">Operaciones</a>
+                <a class="nav-link active" href="expertise.html">Experticia</a>
+                <a class="nav-link" href="insights.html">Insights</a>
+                <a class="nav-link" href="company.html">Empresa</a>
+            </nav>
+            <div class="flex items-center gap-6">
+                <a href="index.html#contacto" class="hidden sm:block border border-primary-container text-primary-container px-8 py-3 font-display text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-primary-container hover:text-white transition-all shadow-[0_5px_15px_rgba(220,20,60,0.1)]">
+                    Contactar
+                </a>
+                <button id="mobile-menu-btn" class="lg:hidden text-white p-2">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-white/95 backdrop-blur-xl hidden flex-col items-center justify-center gap-8 animate-fade-in">
+        <button id="close-menu" class="absolute top-10 right-10 text-slate-900">
+            <span class="material-symbols-outlined text-4xl">close</span>
+        </button>
+        <div class="flex items-center gap-4 mb-12">
+            <div class="w-16 h-16 bg-white p-1 flex items-center justify-center border border-black/5">
+                <img src="assets/images/img203.jpg" alt="Logo" class="w-full h-full object-contain">
+            </div>
+            <span class="font-display text-3xl font-black tracking-widest text-slate-900 uppercase">SASI<span class="text-primary-container">GLOBAL</span></span>
+        </div>
+        <nav class="flex flex-col items-center gap-8 font-display text-2xl font-bold uppercase tracking-widest text-slate-900">
+            <a href="index.html" class="hover:text-primary-container transition-colors">Inicio</a>
+            <a href="solutions.html" class="hover:text-primary-container transition-colors">Soluciones</a>
+            <a href="operations.html" class="hover:text-primary-container transition-colors">Operaciones</a>
+            <a href="expertise.html" class="hover:text-primary-container transition-colors">Experticia</a>
+            <a href="insights.html" class="hover:text-primary-container transition-colors">Insights</a>
+            <a href="company.html" class="hover:text-primary-container transition-colors">Empresa</a>
+        </nav>
+    </div>
+
+<main>
+    <!-- Hero Section -->
+    <section class="relative pt-64 pb-32 px-8 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background z-10"></div>
+            <img alt="Expert Lab" class="w-full h-full object-cover opacity-40 grayscale" src="assets/images/hero_global.png"/>
+        </div>
+        <div class="relative z-10 max-w-[1440px] mx-auto">
+            <div class="inline-flex items-center gap-3 px-6 py-2 border border-white/10 bg-white/5 backdrop-blur-md mb-8">
+                <span class="w-1.5 h-1.5 bg-primary-container"></span>
+                <span class="font-display text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface-variant">Liderazgo Técnico</span>
+            </div>
+            <h1 class="font-display text-5xl md:text-8xl text-slate-900 font-extrabold mb-8 tracking-tighter leading-none">
+                AUTORIDAD EN <br/>
+                <span class="text-primary-container">INGENIERÍA</span> AVANZADA
+            </h1>
+            <p class="font-body text-xl md:text-2xl text-on-surface-variant max-w-3xl font-light leading-relaxed">
+                Nuestra experticia no es solo conocimiento, es la capacidad de transformar desafíos complejos en infraestructuras resilientes y precisas.
+            </p>
+        </div>
+    </section>
+
+    <!-- Key Areas -->
+    <section class="max-w-[1440px] mx-auto px-8 py-32">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="md:col-span-4 border border-black/5 p-12 bg-white hover:bg-slate-50 transition-all relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 blur-[100px] group-hover:bg-primary-container/10 transition-all"></div>
+                <div class="relative z-10">
+                    <span class="material-symbols-outlined text-primary-container text-5xl mb-8">workspace_premium</span>
+                    <h2 class="font-display text-3xl text-slate-900 font-bold mb-6 tracking-tight uppercase">Autoridad Técnica</h2>
+                <p class="font-body text-on-surface-variant leading-relaxed font-light">Implementación de ciclos iterativos de diseño paramétrico que reducen el tiempo de prototipado en un 40%.</p>
+            </div>
+            <div class="p-12 border border-white/10 group hover:border-primary-container transition-all">
+                <span class="font-tech text-[10px] tracking-[0.5em] text-primary-container uppercase mb-8 block">Domain 02</span>
+                <h3 class="font-display text-3xl text-slate-900 font-bold mb-6">Integración Multi-Fuente</h3>
+                <p class="font-body text-on-surface-variant leading-relaxed font-light">Fusión de datos LiDAR, fotogrametría y sensores IoT para una visión holística del activo.</p>
+            </div>
+            <div class="p-12 border border-white/10 group hover:border-primary-container transition-all">
+                <span class="font-tech text-[10px] tracking-[0.5em] text-primary-container uppercase mb-8 block">Domain 03</span>
+                <h3 class="font-display text-3xl text-slate-900 font-bold mb-6">Protocolos de Seguridad</h3>
+                <p class="font-body text-on-surface-variant leading-relaxed font-light">Estándares militares de encriptación y manejo de información sensible en proyectos gubernamentales.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Expertise -->
+    <section class="py-32 border-t border-black/5">
+    <main class="relative z-10 pt-48">
+        <div class="max-w-[1440px] mx-auto px-8 mb-32">
+            <div class="inline-flex items-center gap-3 px-6 py-2 border border-black/10 bg-white/5 backdrop-blur-md mb-8">
+                <span class="w-2 h-2 bg-primary-container rounded-full animate-pulse"></span>
+                <span class="font-tech text-[10px] font-bold uppercase tracking-[0.4em] text-slate-500">Credenciales Elite</span>
+            </div>
+            <h1 class="font-display text-7xl md:text-8xl font-black text-slate-900 leading-[0.9] tracking-tighter mb-16">
+                AUTORIDAD<br/><span class="text-primary-container">TÉCNICA</span> GLOBAL
+            </h1>
+        </div>
+
+        <div class="max-w-[1440px] mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-12 mb-32">
+            <!-- Hero Image Section -->
+            <div class="md:col-span-12 relative h-[500px] border border-black/10 overflow-hidden group">
+                <div class="absolute inset-0 z-10 bg-gradient-to-t from-white/40 via-transparent to-transparent"></div>
+                <img alt="Engineering Excellence" class="w-full h-full object-cover grayscale opacity-20 transition-all duration-1000 group-hover:grayscale-0 group-hover:opacity-40" src="assets/images/tech_high.png"/>
+                
+                <div class="absolute bottom-12 left-12 z-20">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="w-12 h-[1px] bg-primary-container"></span>
+                        <span class="font-tech text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400">Ingeniería Geoespacial de Alta Gama</span>
+                    </div>
+                    <div class="text-slate-900 font-display text-4xl font-bold uppercase tracking-tighter">Precisión <br/>Sin Compromisos</div>
+                </div>
+            </div>
+        </div>
+    </main>
+        <div class="max-w-[1440px] mx-auto px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+                <div class="md:col-span-12 relative h-[500px] border border-black/10 overflow-hidden group">
+            <div class="absolute inset-0 z-10 bg-gradient-to-t from-white/40 via-transparent to-transparent"></div>
+            <img alt="Engineering Excellence" class="w-full h-full object-cover grayscale opacity-20 transition-all duration-1000 group-hover:grayscale-0 group-hover:opacity-40" src="assets/images/tech_high.png"/>
+            
+            <div class="absolute bottom-12 left-12 z-20">bg-white/80 backdrop-blur-xl p-12 border border-black/5 shadow-2xl max-w-sm">
+                        <div class="text-primary-container font-tech text-[10px] font-bold uppercase tracking-[0.4em] mb-4">Certificación de Elite</div>
+                        <div class="text-slate-900 font-display font-black text-3xl mb-6">Precisión de Grado Militar</div>
+                        <div class="font-tech text-[10px] tracking-[0.3em] text-primary-container uppercase font-bold">Años de Excelencia</div>
+                        <p class="font-body text-sm text-on-surface-variant mt-4 font-light">Liderando la frontera tecnológica en gestión territorial y analítica de datos.</p>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="font-display text-4xl md:text-6xl text-slate-900 font-black tracking-tighter leading-tight mb-12">
+                        NUESTRA AUTORIDAD <br/> ES <span class="text-primary-container">VERIFICABLE</span>
+                    </h2>
+                    <div class="space-y-12">
+                        <div class="flex gap-8 items-start">
+                            <div class="w-12 h-12 bg-white/5 flex items-center justify-center shrink-0 border border-black/10 font-tech font-bold text-slate-900">01</div>
+                            <div>
+                                <h4 class="font-display text-xl text-slate-900 font-bold mb-2 uppercase">Certificaciones ISO Premium</h4>
+                                <p class="font-body text-on-surface-variant font-light">Cumplimiento estricto con estándares internacionales de calidad y gestión ambiental.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-8 items-start">
+                            <div class="w-12 h-12 bg-white/5 flex items-center justify-center shrink-0 border border-black/10 font-tech font-bold text-slate-900">02</div>
+                            <div>
+                                <h4 class="font-display text-xl text-slate-900 font-bold mb-2 uppercase">Equipo Multi-Disciplinario</h4>
+                                <p class="font-body text-on-surface-variant font-light">Doctores en ingeniería, expertos en SIG y analistas de datos senior dedicados a su proyecto.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-8 items-start">
+                            <div class="w-12 h-12 bg-white/5 flex items-center justify-center shrink-0 border border-black/10 font-tech font-bold text-slate-900">03</div>
+                            <div>
+                                <h4 class="font-display text-xl text-slate-900 font-bold mb-2 uppercase">Patentes y R&D</h4>
+                                <p class="font-body text-on-surface-variant font-light">Inversión continua en el desarrollo de algoritmos propios para el procesamiento masivo de nubes de puntos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+    <!-- Footer -->
+    <footer id="footer" class="w-full border-t border-white/5 pt-48 pb-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-primary-container/20 blur-[120px]"></div>
+        </div>
+        <div class="max-w-[1440px] mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-12 gap-24 relative z-10">
+            <div class="md:col-span-5 flex flex-col gap-12">
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-16 bg-white p-1 flex items-center justify-center rounded-sm">
+                        <img src="assets/images/img203.jpg" alt="SASIGLOBAL Logo" class="w-full h-full object-contain">
+                    </div>
+                    <span class="font-display text-3xl font-black tracking-[0.2em] text-white uppercase">SASI<span class="text-primary-container">GLOBAL</span></span>
+                </div>
+                <p class="font-display text-sm font-light text-slate-400 max-w-sm leading-loose uppercase tracking-widest">
+                    © 2026 SASIGLOBAL SAS. <br />Autoridad Geoespacial. Ingeniería de Precisión Industrial.
+                </p>
+            </div>
+            <div class="md:col-span-2 flex flex-col gap-8">
+                <span class="font-display text-[10px] font-black uppercase tracking-[0.5em] text-white">Sistemas</span>
+                <div class="flex flex-col gap-4">
+                    <a class="font-body text-xs text-slate-400 hover:text-primary-container transition-colors uppercase tracking-widest" href="solutions.html">Infraestructura</a>
+                    <a class="font-body text-xs text-slate-400 hover:text-primary-container transition-colors uppercase tracking-widest" href="solutions.html">Aeroespacial</a>
+                    <a class="font-body text-xs text-slate-400 hover:text-primary-container transition-colors uppercase tracking-widest" href="insights.html">IA Geoespacial</a>
+                </div>
+            </div>
+            <div class="md:col-span-2 flex flex-col gap-8">
+                <span class="font-display text-[10px] font-black uppercase tracking-[0.5em] text-white">Compañía</span>
+                <div class="flex flex-col gap-4">
+                    <a class="font-body text-xs text-slate-400 hover:text-primary-container transition-colors uppercase tracking-widest" href="company.html">Misión</a>
+                    <a class="font-body text-xs text-slate-400 hover:text-primary-container transition-colors uppercase tracking-widest" href="operations.html">Red Global</a>
+                    <a class="font-body text-xs text-slate-400 hover:text-primary-container transition-colors uppercase tracking-widest" href="expertise.html">Expertos</a>
+                </div>
+            </div>
+            <div class="md:col-span-3 flex flex-col gap-8">
+                <span class="font-display text-[10px] font-black uppercase tracking-[0.2em] text-white">Acceso Seguro</span>
+                <button class="w-full border border-white/10 bg-white/5 px-8 py-5 font-display font-black text-white uppercase text-[10px] tracking-[0.4em] hover:bg-white/10 transition-all flex items-center justify-between">
+                    PORTAL CLIENTE
+                    <span class="material-symbols-outlined text-lg">lock</span>
+                </button>
+            </div>
+        </div>
+        <div class="max-w-[1440px] mx-auto px-6 md:px-16 mt-32 text-center">
+            <span class="text-[9px] font-tech text-slate-500 tracking-[1em] uppercase">Security Level: Enterprise Grade | Edge-Optimized Platform</span>
+        </div>
+    </footer>
+
+<script src="main.js"></script>
+</body>
+</html>
