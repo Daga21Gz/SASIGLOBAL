@@ -220,6 +220,85 @@ function initContactForm() {
 }
 
 /**
+ * Portafolio Vivo: GIS Map Integration (MapLibre + Cloudflare R2)
+ */
+function initGISMap() {
+    const mapContainer = document.getElementById('map');
+    if (!mapContainer) return;
+
+    // URL de tus datos en Cloudflare R2
+    const R2_DATA_URL = 'https://pub-fec6b21939fb4076bfd409fa5c1d7669.r2.dev/sedes.json';
+
+    // Asegurarse de que la librería está cargada
+    if (typeof maplibregl === 'undefined') {
+        console.warn('MapLibre GL JS not loaded yet.');
+        return;
+    }
+
+    const map = new maplibregl.Map({
+        container: 'map',
+        style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+        center: [-74.5, 5.5], 
+        zoom: 5.5,
+        scrollZoom: false
+    });
+
+    map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+
+    map.on('load', async () => {
+        try {
+            const response = await fetch(R2_DATA_URL);
+            const data = await response.json();
+
+            map.addSource('sedes', {
+                type: 'geojson',
+                data: data
+            });
+
+            map.addLayer({
+                id: 'sedes-points',
+                type: 'circle',
+                source: 'sedes',
+                paint: {
+                    'circle-radius': 8,
+                    'circle-color': '#dc143c',
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#ffffff'
+                }
+            });
+
+            map.on('click', 'sedes-points', (e) => {
+                const coordinates = e.features[0].geometry.coordinates.slice();
+                const props = e.features[0].properties;
+
+                new maplibregl.Popup({ className: 'elite-popup', closeButton: false })
+                    .setLngLat(coordinates)
+                    .setHTML(`
+                        <div class="p-4 font-display">
+                            <h3 class="text-primary-container font-black uppercase text-xs tracking-widest mb-1">${props.ciudad}</h3>
+                            <p class="text-slate-900 font-bold text-sm mb-2 uppercase">${props.tipo}</p>
+                            <p class="text-slate-600 text-[10px] leading-relaxed font-light">${props.descripcion}</p>
+                        </div>
+                    `)
+                    .addTo(map);
+                
+                map.flyTo({
+                    center: coordinates,
+                    zoom: 12,
+                    speed: 0.8
+                });
+            });
+
+            map.on('mouseenter', 'sedes-points', () => map.getCanvas().style.cursor = 'pointer');
+            map.on('mouseleave', 'sedes-points', () => map.getCanvas().style.cursor = '');
+
+        } catch (error) {
+            console.error('Error cargando datos GIS desde R2:', error);
+        }
+    });
+}
+
+/**
  * Gestión de Contenido Dinámica: Supabase Integration
  */
 async function initSupabaseProjects() {
