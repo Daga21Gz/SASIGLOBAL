@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Tooling/Agents
+.agents/
+.claude/
+.kiro/
+.windsurf/
+.gemini/
+.DS_Store
+
+# HyperFrames Renders
+sasiglobal-intro/renders/
+sasiglobal-intro/.hyperframes/
+*.mp4
+*.wav
+
+# Local Config
+.env
+*.log

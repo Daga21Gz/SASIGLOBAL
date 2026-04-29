@@ -1,0 +1,208 @@
+<template id="sasiglobal-elite-template">
+  <div
+    data-composition-id="sasiglobal-elite"
+    data-width="1920"
+    data-height="1080"
+    data-duration="15"
+    data-start="0"
+  >
+    <style>
+      [data-composition-id="sasiglobal-elite"] {
+        background: #0a0a0f;
+        font-family: "Inter", sans-serif;
+        color: white;
+        overflow: hidden;
+      }
+
+      .scene {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 80px;
+        box-sizing: border-box;
+      }
+
+      .image-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+
+      .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.4;
+      }
+
+      .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(10, 10, 15, 0.9) 0%, rgba(10, 10, 15, 0.4) 50%, rgba(10, 10, 15, 0.9) 100%);
+        z-index: 1;
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        width: 100%;
+      }
+
+      .logo-v {
+        width: 180px;
+        height: 180px;
+        background: white;
+        padding: 20px;
+        margin-bottom: 40px;
+        box-shadow: 0 0 50px rgba(220, 20, 60, 0.5);
+      }
+
+      .title-v {
+        font-size: 110px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        margin-bottom: 10px;
+      }
+
+      .title-v span {
+        color: #dc143c;
+      }
+
+      .subtitle-v {
+        font-size: 32px;
+        text-transform: uppercase;
+        letter-spacing: 0.5em;
+        color: #94a3b8;
+      }
+
+      .service-text {
+        font-size: 80px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        line-height: 1.1;
+      }
+
+      .crimson-line {
+        width: 150px;
+        height: 6px;
+        background: #dc143c;
+        margin: 40px auto;
+      }
+
+      .footer-v {
+        position: absolute;
+        bottom: 80px;
+        font-size: 24px;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: #dc143c;
+        font-weight: 700;
+      }
+    </style>
+
+    <!-- Scene 1: Intro -->
+    <div id="scene-1" class="scene">
+      <div class="content">
+        <div class="logo-v" id="s1-logo">
+          <img src="../assets/images/img203.jpg" alt="Logo" style="width: 100%; height: 100%; object-fit: contain; opacity: 1;">
+        </div>
+        <h1 class="title-v" id="s1-title">SASI<span>GLOBAL</span></h1>
+        <p class="subtitle-v" id="s1-subtitle">Autoridad Geoespacial</p>
+      </div>
+    </div>
+
+    <!-- Scene 2: Engineering -->
+    <div id="scene-2" class="scene" style="opacity: 0;">
+      <div class="image-container">
+        <img src="../assets/images/solutions_industrial.png" alt="Industrial">
+        <div class="overlay"></div>
+      </div>
+      <div class="content">
+        <h2 class="service-text" id="s2-text">Ingeniería de<br>Precisión Industrial</h2>
+        <div class="crimson-line" id="s2-line"></div>
+      </div>
+    </div>
+
+    <!-- Scene 3: Global Network -->
+    <div id="scene-3" class="scene" style="opacity: 0;">
+      <div class="image-container">
+        <img src="../assets/images/operations_center.png" alt="Operations">
+        <div class="overlay"></div>
+      </div>
+      <div class="content">
+        <h2 class="service-text" id="s3-text">Red Global de<br>Operaciones</h2>
+        <div class="crimson-line" id="s3-line"></div>
+      </div>
+    </div>
+
+    <!-- Scene 4: Intelligence -->
+    <div id="scene-4" class="scene" style="opacity: 0;">
+      <div class="image-container">
+        <img src="../assets/images/global_intel.png" alt="Intelligence">
+        <div class="overlay"></div>
+      </div>
+      <div class="content">
+        <h2 class="service-text" id="s4-text">Inteligencia<br>Geoespacial Avanzada</h2>
+        <div class="crimson-line" id="s4-line"></div>
+      </div>
+    </div>
+
+    <!-- Scene 5: Outro -->
+    <div id="scene-5" class="scene" style="opacity: 0;">
+      <div class="content">
+        <div class="logo-v" id="s5-logo">
+          <img id="logo-outro" src="../assets/images/img203.jpg" alt="Logo" style="width: 100%; height: 100%; object-fit: contain; opacity: 1;">
+        </div>
+        <h1 class="title-v" id="s5-title">EL FUTURO ES<br><span>GEOESPACIAL</span></h1>
+        <p class="subtitle-v" id="s5-subtitle">www.sasiglobal.com</p>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // Scene 1 Transitions (0-3s)
+      tl.from("#s1-logo", { scale: 0, rotation: -45, opacity: 0, duration: 1, ease: "back.out(1.7)" }, 0.2);
+      tl.from("#s1-title", { y: 50, opacity: 0, duration: 0.8, ease: "power4.out" }, 0.6);
+      tl.from("#s1-subtitle", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, 1.0);
+      tl.to("#scene-1", { opacity: 0, duration: 0.5, ease: "power2.in" }, 2.5);
+
+      // Scene 2 Transitions (3-6s)
+      tl.to("#scene-2", { opacity: 1, duration: 0.5 }, 3.0);
+      tl.from("#s2-text", { x: -100, opacity: 0, duration: 1, ease: "expo.out" }, 3.2);
+      tl.from("#s2-line", { width: 0, duration: 0.8, ease: "power2.inOut" }, 3.8);
+      tl.to("#scene-2", { opacity: 0, duration: 0.5, ease: "power2.in" }, 5.5);
+
+      // Scene 3 Transitions (6-9s)
+      tl.to("#scene-3", { opacity: 1, duration: 0.5 }, 6.0);
+      tl.from("#s3-text", { x: 100, opacity: 0, duration: 1, ease: "expo.out" }, 6.2);
+      tl.from("#s3-line", { width: 0, duration: 0.8, ease: "power2.inOut" }, 6.8);
+      tl.to("#scene-3", { opacity: 0, duration: 0.5, ease: "power2.in" }, 8.5);
+
+      // Scene 4 Transitions (9-12s)
+      tl.to("#scene-4", { opacity: 1, duration: 0.5 }, 9.0);
+      tl.from("#s4-text", { scale: 1.2, opacity: 0, duration: 1, ease: "power3.out" }, 9.2);
+      tl.from("#s4-line", { width: 0, duration: 0.8, ease: "power2.inOut" }, 9.8);
+      tl.to("#scene-4", { opacity: 0, duration: 0.5, ease: "power2.in" }, 11.5);
+
+      // Scene 5 Transitions (12-15s)
+      tl.to("#scene-5", { opacity: 1, duration: 0.5 }, 12.0);
+      tl.from("#s5-logo", { y: -50, opacity: 0, duration: 1, ease: "back.out" }, 12.2);
+      tl.from("#s5-title", { scale: 0.8, opacity: 0, duration: 0.8, ease: "expo.out" }, 12.6);
+      tl.from("#s5-subtitle", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, 13.0);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["sasiglobal-elite"] = tl;
+    </script>
+  </div>
+</template>
